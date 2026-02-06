@@ -1,0 +1,30 @@
+app1:
+  enabled: true
+  name: argo-deployment
+  namespace: dev
+  label: argo
+  image: ECR_IMAGE_NAME
+  port: 9000
+  hpa:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+    targetCPUUtilizationPercentage: 50
+
+app2:
+  enabled: true
+  name: argo-deployment-2
+  namespace: dev
+  label: argo-2
+  image: ECR_IMAGE_NAME_2
+  port: 80
+  hpa:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 60
+
+ingress:
+  enabled: true
+  hostname: <your Domain>
+  certificateArn: <ACM ARN>
